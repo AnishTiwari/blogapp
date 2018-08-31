@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href={% static './bs-css/bootstrap.min.css' %}>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<title>
+user registration	</title>
+</head>
+    <body  style="background-color: #e9e2e1">
+    <!--<nav class="navbar navbar-expand navbar-dark" style="background-color: #6C648B;">-->
+      <!--<a class="navbar-brand" href="#"><h4>SREC OBE</h4></a>-->
+      <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
+      <!--</button>-->
+
+      <!--<div class="collapse navbar-collapse" id="navbarsExample02">-->
+        <!--<ul class="navbar-nav mr-auto">-->
+        <!--<li>-->
+            <!--<a class="nav-link" href="./index.html" class="btn btn-outline-success my-2 my-sm-0"><h5>HOME</h5></a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a id="results" class="nav-link" href="./results" class="btn btn-outline-success my-2 my-sm-0"><h5>RESULTS</h5></a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a id="results" class="nav-link" href="../index.html" class="btn btn-outline-success my-2 my-sm-0"><h5 style="color: red;">EXIT</h5></a>-->
+        <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</nav>-->
+    <div class="container">
+        <div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="text-center">
+            <div class="alert alert-primary">
+                <div class="">
+                    <h3>Register for an Account</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <form class="form=group" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                <div class="">
+                                    <span class="text-danger small"><b>{{ field.errors }}</b></span>
+                                </div>
+                                <div class="row">
+                                <label class="col-6 text-right"><b>{{ field.label_tag }}</b></label>
+                                <div class="col-6 text-left">{{ field }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    Already have an account? <a href="{% url 'indexregister' %}">Click here</a> to log in.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </body>
+</html>
