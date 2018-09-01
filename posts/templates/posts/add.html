@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href={% static './bs-css/bootstrap.min.css' %}>
+<link type="text/javascript" href={% static './bs-css/bootstrap.min.js' %}>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +11,16 @@
     <title>Document</title>
 </head>
 <body>
-<h2>hello worlsd {{add}}</h2>
+<div class="container">
+<h2 class="center-align text-info">{{user}}'s Blog</h2>
+ <label>Title</label><br>
+    <form action="/post/blogged/" method="POST">
+        {% csrf_token %}
+<input type="text" name="title" class="input-group input-group-lg">
+<label>Body</label><br>
+    <textarea name="body" class="input-group input-group-lg" rows="10"></textarea><br>
+<input type="submit" value="Submit" class="btn btn-primary btn-success">
+</form>
+</div>
 </body>
 </html>

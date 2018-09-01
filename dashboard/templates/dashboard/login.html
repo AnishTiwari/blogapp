@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href={% static './bs-css/bootstrap.min.css' %}>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<title>
+        BLOG- login
+    </title>
+</head>
+    <body  style="background-color: #e9e2e1">
+    <nav class="navbar navbar-expand navbar-dark" style="background-color: #6C648B;">
+      <a class="navbar-brand" href="#"><h4>BLOG </h4>
+      <a href="./download/" style="color:white;margin-left: 1100px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample02">
+      </div>
+    </nav>
+    <div class="container">
+        <!--<div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>-->
+        <!--<div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>-->
+        <!--<div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>-->
+        <br><br><br><br><br><br>
+        <div class="container-fluid">
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <div class="alert text-center" style="background-color: #dcd6d6;">
+                <div class="col-2"></div>
+                <div class="panel-body" class="text-monospace" >
+                    <h3 class="text-monospace" > LOGIN</h3><br>
+                    <div class="form-group"></div>
+                    {% if error_message %}
+                        <p><strong style="color:red;">{{ error_message }}</strong></p>
+                    {% endif %}
+                     <div class="card-body px-lg-5 pt-0">
+                    <form role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="md-form" >
+
+                            <div >
+                                <input id="id_username" maxlength="30" name="username" type="text" class="form-control" placeholder="Username">
+                            </div><br>
+                        </div>
+                        <div class="md-form" >
+                            <div>
+                                <input id="id_password" maxlength="30" name="password" type="password" class="form-control" placeholder="Password">
+                            </div><br>
+                        </div>
+
+                    <div class="form-group">
+                            <div>
+                                <button type="submit"id= "login"  class="btn btn-rounded btn-block my-4 waves-effect z-depth-0" style="background-color:#6C648B; color:white;">Log In</button>
+
+                            </div>
+                    </div>
+
+                    </form></div>
+                     <div class="panel-footer">
+
+                </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-2">
+        </div>
+    <div class="col-3"></div>
+</div>
+
+    </div>
+    </div>
+    </body>
+</html>
+
+
+
+

@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href={% static './bs-css/bootstrap.min.css' %}>
+<link type="text/javascript" href={% static './bs-css/bootstrap.min.js' %}>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body{background:#f9f9f9;}
+        .card{margin-bottom: 15px; border-radius:0; box-shadow: 0 3px 5px rgba(0,0,0,.1); }
+        .header-top{box-shadow: 0 3px 5px rgba(0,0,0,.1)}
+        @media(min-width:992px) {
+        #wrapper{padding: 5% 5% 5%;}
+    </style>
+</head>
+<body>
+<!------ Include the above in your HEAD tag ---------->
+
+<div id="wrapper">
+
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">{{user_name}}'s Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-md-auto d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link" href="./logout/">{{ user.username }}-Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+<div>
+    <a style="display:block;" class="center-align" href="{% url 'add' %}">write a blog</a>
+    <a style="display:block;" class="center-align" href="{% url 'viewblog' %}">View my blog</a>
+
+    <h3 class="center-align red lighten-3">{{title}}</h3>
+<div class="card">
+  <div class="card-content">
+    {% for posts in context1 %}
+      <p style="color:blue;">{{posts.title}}</p>
+      <textarea rows="15" style="width:100%; color:red;">
+        {{posts.body}}
+      </textarea>
+      <div>
+          <p style="color:green;">{{posts.created_at}}</p>
+      </div>
+      {% endfor %}
+  </div>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>
